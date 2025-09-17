@@ -23,12 +23,13 @@ def initizalize_conversation():
         input(f"An error occurred: {e} press enter to continue...")
         return None
 
-def ask_question(json, question):
+def ask_question(json, etag, question):
     try:
         url = "https://xsva.support.xboxlive.com/chat"
+
         payload = {
             "conversation_id": json["conversationId"],
-            "eTag": json["eTag"],
+            "eTag": etag if etag else json["eTag"],
 
             "customizationSelections":{"personaId":json["customizationSelections"]["personaId"]},
             "text": question,
@@ -38,15 +39,17 @@ def ask_question(json, question):
         if debug:
             print("[DEBUG] Response from ask_question: ", response, "\n[DEBUG] USED PAYLOAD: ", payload)
 
-        return response["response"][-1]["text"]
+        return response["response"][-1]["text"], response["eTag"]
     
     except Exception as e:
-        input(f"An error occurred: {e} press enter to continue...")
+        
+        input(f"{payload}An error occurred: {e} press enter to continue...")
         return None
     
 json_data  = initizalize_conversation()
 
-while True:
-    Merl_Response = ask_question(json_data, input("\nUser question: "))
-    print("\nMerl: ", Merl_Response)
+etag = None
 
+while True:
+    Merl_Response, etag = ask_question(json_data, etag, input("\nUser question: "))
+    print("\nMerl: ", Merl_Response)

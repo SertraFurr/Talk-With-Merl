@@ -1,4 +1,5 @@
-## Talk with Merl AI (from Minecraft)
+## Talk with Merl AI (from Minecraft.net) 
+`I don't know why you want to talk with her. but sure`
 
 **⚙️ How to use:**
 

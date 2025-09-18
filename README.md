@@ -1,6 +1,8 @@
 ## Talk with Merl AI (from Minecraft.net) 
 `I don't know why you want to talk with her. but sure`
 
+Website URL : [Click Here](https://help.minecraft.net/hc/en-us)
+
 **⚙️ How to use:**
 
 - Needed package:
